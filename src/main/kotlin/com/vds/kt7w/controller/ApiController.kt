@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
-@RequestMapping("/7w")
+@RequestMapping("/mycocktail")
 class ApiController {
     companion object {
         private val LOGGER = LogManager.getLogger()
