@@ -1,7 +1,6 @@
 package com.vds.kt7w.controller
 
 import com.vds.kt7w.model.Cocktail
-import com.vds.kt7w.model.Hello
 import com.vds.kt7w.model.Ingredient
 import com.vds.kt7w.repository.CocktailRepository
 import com.vds.kt7w.repository.IngredientRepository
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
-import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @RequestMapping("/7w")
@@ -26,12 +24,6 @@ class ApiController {
 
     @Autowired
     lateinit var ingredientRepository: IngredientRepository
-
-    private val index = AtomicInteger()
-
-    @GetMapping("/hello/{name}")
-    fun home(@PathVariable("name") name: String) =
-        Hello(index.incrementAndGet(), "Hello $name !")
 
     @GetMapping("/cocktail/all")
     fun findAllCocktails(): List<Cocktail> {
