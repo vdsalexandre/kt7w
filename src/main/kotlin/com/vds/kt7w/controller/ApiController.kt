@@ -2,7 +2,9 @@ package com.vds.kt7w.controller
 
 import com.vds.kt7w.model.Cocktail
 import com.vds.kt7w.model.Hello
+import com.vds.kt7w.model.Ingredient
 import com.vds.kt7w.repository.CocktailRepository
+import com.vds.kt7w.repository.IngredientRepository
 import org.apache.logging.log4j.LogManager
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,7 +22,10 @@ class ApiController {
     }
 
     @Autowired
-    lateinit var repository: CocktailRepository
+    lateinit var cocktailRepository: CocktailRepository
+
+    @Autowired
+    lateinit var ingredientRepository: IngredientRepository
 
     private val index = AtomicInteger()
 
@@ -29,14 +34,26 @@ class ApiController {
         Hello(index.incrementAndGet(), "Hello $name !")
 
     @GetMapping("/cocktail/all")
-    fun findAll(): List<Cocktail> {
+    fun findAllCocktails(): List<Cocktail> {
         LOGGER.info("GET: /cocktail/all")
-        return repository.findAll()
+        return cocktailRepository.findAll()
     }
 
     @GetMapping("/cocktail/{id}")
-    fun findById(@PathVariable("id") id: Long): Optional<Cocktail> {
+    fun findCocktailById(@PathVariable("id") id: Long): Optional<Cocktail> {
         LOGGER.info("GET: /cocktail/$id")
-        return repository.findById(id)
+        return cocktailRepository.findById(id)
+    }
+
+    @GetMapping("/ingredient/all")
+    fun findAllIngredients(): List<Ingredient> {
+        LOGGER.info("GET /ingredient/all")
+        return ingredientRepository.findAll()
+    }
+
+    @GetMapping("/ingredient/{id}")
+    fun findIngredientById(@PathVariable("id") id: Long): Optional<Ingredient> {
+        LOGGER.info("GET: /ingredient/$id")
+        return ingredientRepository.findById(id)
     }
 }
