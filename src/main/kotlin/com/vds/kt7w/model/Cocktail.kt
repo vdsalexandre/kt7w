@@ -25,5 +25,5 @@ data class Cocktail(
             nullable = false, updatable = false)],
         inverseJoinColumns = [JoinColumn(name = "id_ingredient", referencedColumnName = "id_ingredient",
             nullable = false, updatable = false)])
-    @JsonIgnoreProperties("cocktails")
+    @JsonIgnoreProperties("cocktails") // to avoid recursive loop
     val ingredients: List<Ingredient> = mutableListOf())

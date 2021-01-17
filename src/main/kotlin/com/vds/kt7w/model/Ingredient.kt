@@ -18,5 +18,5 @@ data class Ingredient(
     val nomIngredient: String,
     val typeIngredient: String,
     @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("ingredients")
+    @JsonIgnoreProperties("ingredients") // to avoid recursive loop
     val cocktails: List<Cocktail> = mutableListOf())
