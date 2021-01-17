@@ -39,7 +39,7 @@ class ApiController {
 
     @GetMapping("/ingredient/all")
     fun findAllIngredients(): List<Ingredient> {
-        LOGGER.info("GET /ingredient/all")
+        LOGGER.info("GET: /ingredient/all")
         return ingredientRepository.findAll()
     }
 
@@ -47,5 +47,11 @@ class ApiController {
     fun findIngredientById(@PathVariable("id") id: Long): Optional<Ingredient> {
         LOGGER.info("GET: /ingredient/$id")
         return ingredientRepository.findById(id)
+    }
+
+    @GetMapping("/ingredient/all/{type}")
+    fun findAllIngredientsByType(@PathVariable("type") type: String): List<Ingredient> {
+        LOGGER.info("GET: /ingredient/all/$type")
+        return ingredientRepository.findAllByType(type)
     }
 }
