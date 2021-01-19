@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -68,5 +69,11 @@ class ApiController {
     fun deleteIngredient(@PathVariable("id") id: Long) {
         LOGGER.info("DELETE: /ingredient/del/$id")
         ingredientRepository.deleteById(id)
+    }
+
+    @PutMapping("/ingredient/update")
+    fun updateIngredient(@RequestBody ingredient: Ingredient) {
+        LOGGER.info("PUT: /ingredient/update -> $ingredient")
+        ingredientRepository.save(ingredient)
     }
 }
