@@ -1,9 +1,9 @@
-package com.vds.kt7w.controller
+package com.vds.mycocktail.controller
 
-import com.vds.kt7w.model.Cocktail
-import com.vds.kt7w.model.Ingredient
-import com.vds.kt7w.repository.CocktailRepository
-import com.vds.kt7w.repository.IngredientRepository
+import com.vds.mycocktail.model.Cocktail
+import com.vds.mycocktail.model.Ingredient
+import com.vds.mycocktail.repository.CocktailRepository
+import com.vds.mycocktail.repository.IngredientRepository
 import org.apache.logging.log4j.LogManager
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.DeleteMapping

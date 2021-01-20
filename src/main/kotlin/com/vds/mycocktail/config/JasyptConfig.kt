@@ -1,4 +1,4 @@
-package com.vds.kt7w.config
+package com.vds.mycocktail.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource

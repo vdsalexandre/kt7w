@@ -1,6 +1,6 @@
-package com.vds.kt7w.repository
+package com.vds.mycocktail.repository
 
-import com.vds.kt7w.model.Ingredient
+import com.vds.mycocktail.model.Ingredient
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 

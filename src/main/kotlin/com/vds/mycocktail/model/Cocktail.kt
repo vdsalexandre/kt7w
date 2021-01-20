@@ -1,4 +1,4 @@
-package com.vds.kt7w.model
+package com.vds.mycocktail.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import javax.persistence.Column

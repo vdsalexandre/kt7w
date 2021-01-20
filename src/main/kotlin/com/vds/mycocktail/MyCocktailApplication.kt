@@ -1,4 +1,4 @@
-package com.vds.kt7w
+package com.vds.mycocktail
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -6,8 +6,8 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @EnableEncryptableProperties
-open class Kt7wApplication
+open class MyCocktailApplication
 
 fun main(args: Array<String>) {
-	runApplication<Kt7wApplication>(*args)
+	runApplication<MyCocktailApplication>(*args)
 }
