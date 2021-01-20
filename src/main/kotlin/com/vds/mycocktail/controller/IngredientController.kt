@@ -1,8 +1,6 @@
 package com.vds.mycocktail.controller
 
-import com.vds.mycocktail.model.Cocktail
 import com.vds.mycocktail.model.Ingredient
-import com.vds.mycocktail.repository.CocktailRepository
 import com.vds.mycocktail.repository.IngredientRepository
 import org.apache.logging.log4j.LogManager
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,61 +15,46 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.Optional
 
 @RestController
-@RequestMapping("/mycocktail")
-class ApiController {
+@RequestMapping("/mycocktail/ingredient")
+class IngredientController {
     companion object {
         private val LOGGER = LogManager.getLogger()
     }
 
     @Autowired
-    lateinit var cocktailRepository: CocktailRepository
-
-    @Autowired
     lateinit var ingredientRepository: IngredientRepository
 
-    @GetMapping("/cocktail/all")
-    fun findAllCocktails(): List<Cocktail> {
-        LOGGER.info("GET: /cocktail/all")
-        return cocktailRepository.findAll()
-    }
-
-    @GetMapping("/cocktail/{id}")
-    fun findCocktailById(@PathVariable("id") id: Long): Optional<Cocktail> {
-        LOGGER.info("GET: /cocktail/$id")
-        return cocktailRepository.findById(id)
-    }
-
-    @GetMapping("/ingredient/all")
+    @GetMapping("/all")
     fun findAllIngredients(): List<Ingredient> {
         LOGGER.info("GET: /ingredient/all")
         return ingredientRepository.findAll()
     }
 
-    @GetMapping("/ingredient/{id}")
+    @GetMapping("/{id}")
     fun findIngredientById(@PathVariable("id") id: Long): Optional<Ingredient> {
         LOGGER.info("GET: /ingredient/$id")
         return ingredientRepository.findById(id)
     }
 
-    @GetMapping("/ingredient/all/{type}")
+    @GetMapping("/all/{type}")
     fun findAllIngredientsByType(@PathVariable("type") type: String): List<Ingredient> {
         LOGGER.info("GET: /ingredient/all/$type")
         return ingredientRepository.findAllByType(type)
     }
 
-    @PostMapping("/ingredient/add")
+    @PostMapping("/add")
     fun saveIngredient(@RequestBody ingredient: Ingredient) {
         LOGGER.info("POST: /ingredient/add -> $ingredient")
         ingredientRepository.save(ingredient)
     }
 
-    @DeleteMapping("/ingredient/del/{id}")
+    @DeleteMapping("/del/{id}")
     fun deleteIngredient(@PathVariable("id") id: Long) {
         LOGGER.info("DELETE: /ingredient/del/$id")
         ingredientRepository.deleteById(id)
     }
 
-    @PutMapping("/ingredient/update")
+    @PutMapping("/update")
     fun updateIngredient(@RequestBody ingredient: Ingredient) {
         LOGGER.info("PUT: /ingredient/update -> $ingredient")
         ingredientRepository.save(ingredient)
