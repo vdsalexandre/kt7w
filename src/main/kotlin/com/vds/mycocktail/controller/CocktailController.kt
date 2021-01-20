@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.Optional
 
 @RestController
-@RequestMapping("/mycocktail")
+@RequestMapping("/mycocktail/cocktail")
 class CocktailController {
     companion object {
         private val LOGGER = LogManager.getLogger()
@@ -20,13 +20,13 @@ class CocktailController {
     @Autowired
     lateinit var cocktailRepository: CocktailRepository
 
-    @GetMapping("/cocktail/all")
+    @GetMapping("/all")
     fun findAllCocktails(): List<Cocktail> {
         LOGGER.info("GET: /cocktail/all")
         return cocktailRepository.findAll()
     }
 
-    @GetMapping("/cocktail/{id}")
+    @GetMapping("/{id}")
     fun findCocktailById(@PathVariable("id") id: Long): Optional<Cocktail> {
         LOGGER.info("GET: /cocktail/$id")
         return cocktailRepository.findById(id)
