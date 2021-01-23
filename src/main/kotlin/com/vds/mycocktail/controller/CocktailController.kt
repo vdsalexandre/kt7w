@@ -36,6 +36,12 @@ class CocktailController {
         return cocktailRepository.findById(id)
     }
 
+    @GetMapping("/contains/{ingredientIds}")
+    fun findCocktailsContainingTheseIngredients(@PathVariable("ingredientIds") ingredientIds: List<Long>): List<Cocktail> {
+        LOGGER.info("GET: /cocktail/contains -> $ingredientIds")
+        return cocktailRepository.findCocktailsContainingTheseIngredients(ingredientIds, ingredientIds.size)
+    }
+
     @PostMapping("/add")
     fun saveCocktail(@RequestBody cocktail: Cocktail) {
         LOGGER.info("POST: /cocktail/add -> $cocktail")
