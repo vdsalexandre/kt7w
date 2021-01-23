@@ -39,7 +39,7 @@ class IngredientController {
     @GetMapping("/all/{type}")
     fun findAllIngredientsByType(@PathVariable("type") type: String): List<Ingredient> {
         LOGGER.info("GET: /ingredient/all/$type")
-        return ingredientRepository.findAllByType(type)
+        return ingredientRepository.findAllByTypeOrderByName(type)
     }
 
     @PostMapping("/add")

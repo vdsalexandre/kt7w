@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
 interface IngredientRepository : JpaRepository<Ingredient, Long> {
-    @Query(value = "SELECT I.* FROM ingredient I WHERE I.type_ingredient = ?1", nativeQuery = true)
-    fun findAllByType(type: String): List<Ingredient>
+    @Query(value = "SELECT I.* FROM ingredient I WHERE I.type_ingredient = ?1 ORDER BY nom_ingredient", nativeQuery = true)
+    fun findAllByTypeOrderByName(type: String): List<Ingredient>
 }
