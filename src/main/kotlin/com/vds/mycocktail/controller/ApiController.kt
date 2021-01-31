@@ -17,6 +17,6 @@ class ApiController {
     @GetMapping("/server/status")
     fun healthCheck(): ResponseEntity<Response> {
         LOGGER.info("GET: /mycocktail/server/status")
-        return ResponseEntity.ok(Response(200, "MyCocktail controller is up"))
+        return ResponseEntity.ok(Response(200, "ApiController is [ ok ]"))
     }
 }
