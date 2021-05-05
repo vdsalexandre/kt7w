@@ -26,7 +26,7 @@ class CocktailController {
     lateinit var cocktailRepository: CocktailRepository
 
     @GetMapping("/all")
-    fun findAllCocktails(): List<Cocktail> {
+    fun findAllCocktails(): MutableIterable<Cocktail> {
         LOGGER.info("GET: $REQUEST_COCKTAIL/all")
         return cocktailRepository.findAll()
     }
@@ -38,7 +38,7 @@ class CocktailController {
     }
 
     @GetMapping("/contains/{ingredientIds}")
-    fun findCocktailsContainingTheseIngredients(@PathVariable("ingredientIds") ingredientIds: List<Long>): List<Cocktail> {
+    fun findCocktailsContainingTheseIngredients(@PathVariable("ingredientIds") ingredientIds: List<Long>): Set<Cocktail> {
         LOGGER.info("GET: $REQUEST_COCKTAIL/contains -> $ingredientIds")
         return cocktailRepository.findCocktailsContainingTheseIngredients(ingredientIds, ingredientIds.size)
     }

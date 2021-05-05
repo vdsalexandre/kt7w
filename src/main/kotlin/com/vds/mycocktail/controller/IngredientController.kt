@@ -21,18 +21,18 @@ import org.springframework.web.bind.annotation.RestController
 class IngredientController {
     companion object {
         private val LOGGER = LogManager.getLogger()
+
+        @Autowired
+        lateinit var request: HttpServletRequest
     }
 
     @Autowired
     lateinit var ingredientRepository: IngredientRepository
 
-    @Autowired
-    lateinit var request: HttpServletRequest
-
     @GetMapping("/all")
-    fun findAllIngredients(): List<Ingredient> {
+    fun findAllIngredients(): Set<Ingredient> {
         LOGGER.info("GET: $REQUEST_INGREDIENT/all")
-        return ingredientRepository.findAll()
+        return ingredientRepository.findAll().toSet()
     }
 
     @GetMapping("/{id}")
@@ -42,7 +42,7 @@ class IngredientController {
     }
 
     @GetMapping("/all/{type}")
-    fun findAllIngredientsByType(@PathVariable("type") type: String): List<Ingredient> {
+    fun findAllIngredientsByType(@PathVariable("type") type: String): Set<Ingredient> {
         LOGGER.info("GET: $REQUEST_INGREDIENT/all/$type - FROM: ${request.remoteAddr}")
         return ingredientRepository.findAllByTypeOrderByName(type)
     }
